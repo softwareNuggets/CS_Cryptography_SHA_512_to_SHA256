@@ -1,0 +1,86 @@
+﻿<Window x:Class="DigitalSignatureMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DigitalSignatureMaker"
+        mc:Ignorable="d"
+        Title="One Way Encryption, Message Digest" Height="800" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition x:Name="Row2" Height="auto"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="DarkGray">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button x:Name="Btn512" Content="SHA-512" Width="100"
+                        VerticalContentAlignment="Center"
+                        Click="Btn512_Click"></Button>
+                
+                <Button x:Name="Btn384" Content="SHA-348"  Width="100"
+                        VerticalContentAlignment="Center"
+                        Click="Btn384_Click" Margin="4 0 0 0"></Button>
+
+                <Button x:Name="Btn256" Content="SHA-256" Width="100"
+                        VerticalContentAlignment="Center"
+                        Click="Btn256_Click" Margin="4 0 0 0"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnTextex1" Content="Ex Doc 1" Width="100"
+                        VerticalContentAlignment="Center"
+                        Click="BtnTextex1_Click"></Button>
+            </StackPanel>
+
+        </Grid>
+        
+        <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="600">
+
+            <ScrollViewer x:Name="sv1" 
+                          Background="Azure" BorderBrush="Black" BorderThickness="2" 
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                <TextBox 
+                     x:Name="SourceText"
+                     FontFamily="Consolas" 
+                     HorizontalAlignment="Stretch"  
+                     TextWrapping="Wrap" VerticalAlignment="Stretch"
+                     AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="4" Background="DarkGray">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="SIGN" Width="60" 
+                       Background="SkyBlue"
+                       Margin="10 0 0 0"></Label>
+                <TextBox Width="790" x:Name="DigitalSignature" 
+                     AcceptsReturn="False" AcceptsTab="False"></TextBox>
+                <TextBlock Width="140" x:Name="BitsUsed" Margin="3 3 3 3"
+                           TextAlignment="Center"
+                           FontSize="24"
+                           Background="White"
+                           Foreground="DarkOrange"></TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="6" Background="DarkGray">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="RECV" Width="60" 
+                       Background="SkyBlue"
+                       Margin="10 0 0 0"></Label>
+                <TextBox Width="790" x:Name="ReceivedFromSender" 
+                     AcceptsReturn="False" AcceptsTab="False"></TextBox>
+                <Button x:Name="CompareSignatures" Content="Compare" Width="80"
+                    Click="CompareSignatures_Click"></Button>
+                <Button x:Name="Clear" Content="Clear" Width="60"
+                    Click="Clear_Click" Margin="4,0,0,0"></Button>
+            </StackPanel>
+        </Grid>        
+    </Grid>
+</Window>
